@@ -42,35 +42,32 @@ class Lightning extends React.Component {
         }
 
         this.rowClicked = (row, event) => {
-            let light = row;
-            if (light !== undefined) {
-                light.active = !light.active;
-                if (!light.active) {
-                    light.brightness = 0;
-                }
-                this.changeData( light, { brightness:light.brightness, active:light.active })
-            }
-            this.setState({ selectedLight: light });
+            this.setState({ selectedLight: row });
         }
 
         this.lightHandler = sliderValue => {
-            this.changeData( this.state.selectedLight,
-                { brightness: Math.round(sliderValue * 100) })
+            let changes = {};
+            if (sliderValue > 0) {
+                changes['active'] = true;
+                changes['brightness'] = Math.round(sliderValue * 100);
+            } else {
+                changes['active'] = false;
+                changes['brightness'] = 0;
+            }
+            this.changeData( this.state.selectedLight, changes);
         }
 
         this.changeData = (item, change) => {
             const newData =  this.state.data
-
             for (let i = 0, len = newData.length; i < len; i++) {
                 if (item !== undefined) {
                     if (newData[i].id === item.id) {
                         //light.brightness = sliderValue * 100;
-                        newData[i] = Object.assign({}, newData[i], change)
+                        newData[i] = Object.assign({}, newData[i], change);
                     }
                 }
             }
-
-            this.setState({ data: newData })
+            this.setState({ data: newData });
         }
     }
 
@@ -119,18 +116,23 @@ class Slider extends React.Component {
     super(props)
 
     this.state = {
-      value: 0.4,
+      value: 0
     }
 
     this.handleChange = value => {
-      this.setState({ value })
+      this.setState({ value });
       this.props.lightHandler(value);
     }
   }
 
+  static getDerivedStateFromProps(prevProps, prevState) {
+      const value = prevProps.value !== undefined ? prevProps.value : 0;
+      return {'value': value};
+  }
+
   render () {
       return (
-          <ArcSlider background='#c6c8c9' value={this.props.value} onValueChange={this.handleChange}>
+          <ArcSlider background='#c6c8c9' value={this.state.value} onValueChange={this.handleChange}>
             <p><TiStarburstOutline/></p>
             <h2>{Math.round(this.state.value * 100)}%</h2>
             <p>Brightness</p>
