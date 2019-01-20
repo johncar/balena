@@ -1,0 +1,24 @@
+
+.Lightning {
+    &_slider {
+        color: white;
+
+        @media (min-width: 453px) and (max-width: 768px) {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) and (max-width: 850px) {
+            width: 45%;
+        }
+    }
+    &_table {
+        @media (min-width: 453px) and (max-width: 768px) {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) and (max-width: 850px) {
+            width: 55%;
+        }
+
+    }
+}
