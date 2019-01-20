@@ -1,0 +1,30 @@
+
+.Header {
+    background-color: #2F3033;
+    color: #f4f4f4;
+    width: 100%;
+
+    &_txtCircle {
+      border-radius: 50%;
+      display: inline-block;
+      padding: 8px;
+      text-align: center;
+      background-color: #4D5057;
+    }
+
+    &_txt {
+        margin: auto 1em;
+    }
+
+    &_user {
+        border-left: 1px solid #7E8085;
+        padding: 0.5em 0;
+    }
+
+    &_user_menu {
+        background-color: #2F3033 !important;
+        min-width: 0.5em !important;
+        margin-right: 0.5em !important;
+    }
+
+}
