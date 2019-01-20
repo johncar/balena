@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App/App';
 import * as serviceWorker from './serviceWorker';
-import { Provider, Box, Alert } from 'rendition';
+import { Provider } from 'rendition';
 
 ReactDOM.render(
   <Provider>
-    <Box m={3}>
-        <Alert my={2} success>
-          Let's get started!
-        </Alert>
-    </Box>
+    <App></App>
   </Provider>,
   document.getElementById('root')
 );
