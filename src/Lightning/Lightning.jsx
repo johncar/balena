@@ -38,12 +38,16 @@ class Lightning extends React.Component {
         this.state = {
             selectedLight: undefined,
             data: [],
-            sliderValue: 0
+            sliderValue: 0,
+            highlightedRows: []
         }
 
         this.rowClicked = (row, event) => {
             const sliderValue = row.brightness /100;
-            this.setState({ 'selectedLight': row, 'sliderValue': sliderValue });
+            this.setState({
+                'selectedLight': row,
+                'sliderValue': sliderValue,
+                'highlightedRows': [row.id] });
         }
 
         this.lightHandler = sliderValue => {
@@ -91,7 +95,8 @@ class Lightning extends React.Component {
                     columns={columns}
                     data={this.state.data}
                     rowKey='id'
-                    onRowClick={this.rowClicked}/>
+                    onRowClick={this.rowClicked}
+                    highlightedRows={this.state.highlightedRows}/>
                 </Box>);
         }
 
@@ -101,7 +106,8 @@ class Lightning extends React.Component {
                 columns={columns}
                 data={this.state.data}
                 rowKey='id'
-                onRowClick={this.rowClicked}/>
+                onRowClick={this.rowClicked}
+                highlightedRows={this.state.highlightedRows}/>
             </Box>
             <Box m={2} bg={'#4D5057'} className={'Lightning_slider'}>
               <ArcSlider value={this.state.sliderValue} onValueChange={this.lightHandler}
