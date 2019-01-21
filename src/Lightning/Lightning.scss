@@ -33,4 +33,11 @@
         }
 
     }
+
+}
+
+[data-display='table-head'] > [data-display='table-row'] > [data-display='table-cell'],
+[data-display='table-head'] > [data-display='table-row'] > [data-display='table-cell'] > button
+{
+    font-weight: bold;
 }
