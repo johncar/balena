@@ -31,7 +31,7 @@ class App extends Component {
 
         if (error) {
             return (
-                <div>
+                <div className="root-application">
                     <Header/>
                     <Toolbar/>
                     <Alert danger>{error.message}</Alert>
@@ -40,7 +40,7 @@ class App extends Component {
         }
 
         return (
-            <div>
+            <div className="root-application">
                 <Header/>
                 <Toolbar/>
                 <Lightning data={lightning}/>
