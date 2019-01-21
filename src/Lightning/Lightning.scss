@@ -7,16 +7,28 @@
             width: 100%;
         }
 
-        @media (min-width: 768px) and (max-width: 850px) {
+        @media (min-width: 768px) and (max-width: 1920px) {
             width: 45%;
         }
     }
+
+    &_arc_slider {
+        p, h2 {
+            margin: 5px 0;
+            padding: 0;
+            svg {
+                fill: #FEC400;
+                font-size: 1.2em;
+            }
+        }
+    }
+
     &_table {
         @media (min-width: 453px) and (max-width: 768px) {
             width: 100%;
         }
 
-        @media (min-width: 768px) and (max-width: 850px) {
+        @media (min-width: 768px) and (max-width: 1920px) {
             width: 55%;
         }
 
